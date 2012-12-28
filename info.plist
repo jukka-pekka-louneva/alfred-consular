@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>action</key>
+	<false/>
+	<key>category</key>
+	<string>SCRIPTS</string>
+	<key>command</key>
+	<string>ruby consular.rb {query}</string>
+	<key>disabled</key>
+	<false/>
+	<key>escapedollar</key>
+	<true/>
+	<key>escapequery</key>
+	<true/>
+	<key>escapequerybackquotes</key>
+	<true/>
+	<key>escapequerybrackets</key>
+	<true/>
+	<key>escapequeryquotes</key>
+	<true/>
+	<key>escapequerysemicolons</key>
+	<true/>
+	<key>growloutput</key>
+	<true/>
+	<key>growloutputsticky</key>
+	<false/>
+	<key>keyword</key>
+	<string>cons</string>
+	<key>logging</key>
+	<false/>
+	<key>multifileargs</key>
+	<false/>
+	<key>parameter</key>
+	<integer>2</integer>
+	<key>silent</key>
+	<true/>
+	<key>subtitle</key>
+	<string>Start projects and list, edit or create recipes. Type cons help to list commands.</string>
+	<key>title</key>
+	<string>Consular</string>
+</dict>
+</plist>
