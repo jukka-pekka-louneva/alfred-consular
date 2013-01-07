@@ -43,7 +43,7 @@ def edit(recipe)
   recipe = recipe.gsub(/\s+/, "")
   if recipe_exists(recipe)
     # Run consular edit in terminal
-    osa open_terminal(run_in_terminal(["consular edit #{name}"]))
+    osa open_terminal(run_in_terminal(["consular edit #{recipe}"]))
     puts "Editing recipe: #{recipe}"
   else
     puts "Recipy not found: #{recipe}"
