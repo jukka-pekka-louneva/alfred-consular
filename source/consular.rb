@@ -104,7 +104,7 @@ end
 # Set verbose to true to get detailed info
 def get_list(verbose = false)
   output = `bash list.sh`
-  output = output.gsub(" consular.rb delete.sh icon.png info.plist list.sh ", "\n").to_a[1..-1].join
+  output = output.gsub(" consular.rb delete.sh icon.png info.plist list.sh list.txt ", "\n").to_a[1..-1].join
   if verbose == true
     output = output.to_a
   else
@@ -116,6 +116,40 @@ end
 # Run Apple Scripts
 def osa(s)
   `osascript <<END\n#{s}\nEND`
+end
+
+def create_xml_menu(list, query)
+  string = '<?xml version="1.0"?><items>'
+  list.each do |item|
+    if item.match('^' + query)
+
+      string += '<item uid="'
+      string += item
+      string += '" arg="'
+      string += item
+      string += '" valid="yes" autocomplete="'
+      string += item
+      string += '"><title>'
+      string += item
+      string += '</title>'
+      string += '<icon>icon.png</icon></item>'
+
+    end
+  end
+
+  string += '</items>'
+
+  return string
+
+end
+
+def update_list()
+  File.open('list.txt', 'w') { |file| file.write(get_list(false).join(',')) }
+end
+
+# Create menu for Alfred script filter
+def xml_menu(query)
+  File.open('list.txt', 'r') { |file| return create_xml_menu(file.read.split(','), query) }
 end
 
 # Apple Script for activating terminal with new tab

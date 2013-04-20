@@ -6,17 +6,6 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
 		<key>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</key>
 		<array>
 			<dict>
@@ -77,17 +66,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>A755FFA8-D415-4478-9723-EC5251E54BC5</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -159,7 +137,7 @@
 				<key>subtext</key>
 				<string>Get project list</string>
 				<key>text</key>
-				<string>Consular</string>
+				<string>Consular list (updates list)</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -175,6 +153,7 @@
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
+update_list()
 list()</string>
 				<key>type</key>
 				<integer>2</integer>
@@ -191,7 +170,8 @@ list()</string>
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
-edit("{query}")</string>
+edit("{query}")
+</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
@@ -204,7 +184,7 @@ edit("{query}")</string>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
@@ -214,33 +194,11 @@ edit("{query}")</string>
 				<key>script</key>
 				<string>require 'consular'
 
-string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
-list = get_list(false)
-list.each do |item|
-if item.match('^' + "{query}")
-
-string += '&lt;item uid="'
-string += item
-string += '" arg="'
-string += item
-string += '" valid="yes" autocomplete="'
-string += item
-string += '"&gt;&lt;title&gt;'
-string += item
-string += '&lt;/title&gt;'
-string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
-
-end
-end
-
-string += '&lt;/items&gt;'
-
-puts string
-</string>
+puts xml_menu("{query}")</string>
 				<key>subtext</key>
 				<string>Edit consular recipe</string>
 				<key>title</key>
-				<string>Consular</string>
+				<string>Consular edit</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -271,7 +229,7 @@ start("{query}")</string>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
@@ -281,33 +239,12 @@ start("{query}")</string>
 				<key>script</key>
 				<string>require 'consular'
 
-string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
-list = get_list(false)
-list.each do |item|
-if item.match('^' + "{query}")
-
-string += '&lt;item uid="'
-string += item
-string += '" arg="'
-string += item
-string += '" valid="yes" autocomplete="'
-string += item
-string += '"&gt;&lt;title&gt;'
-string += item
-string += '&lt;/title&gt;'
-string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
-
-end
-end
-
-string += '&lt;/items&gt;'
-
-puts string
+puts xml_menu("{query}")
 </string>
 				<key>subtext</key>
 				<string>Start consular project</string>
 				<key>title</key>
-				<string>Consular</string>
+				<string>Consular start</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -348,7 +285,8 @@ puts string
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
-delete("{query}")</string>
+delete("{query}")
+list()</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
@@ -371,33 +309,11 @@ delete("{query}")</string>
 				<key>script</key>
 				<string>require 'consular'
 
-string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
-list = get_list(false)
-list.each do |item|
-if item.match('^' + "{query}")
-
-string += '&lt;item uid="'
-string += item
-string += '" arg="'
-string += item
-string += '" valid="yes" autocomplete="'
-string += item
-string += '"&gt;&lt;title&gt;'
-string += item
-string += '&lt;/title&gt;'
-string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
-
-end
-end
-
-string += '&lt;/items&gt;'
-
-puts string
-</string>
+puts xml_menu("{query}")</string>
 				<key>subtext</key>
 				<string>Delete recipe</string>
 				<key>title</key>
-				<string>Consular</string>
+				<string>Consular delete</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -415,7 +331,8 @@ puts string
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
-create("{query}")</string>
+create("{query}")
+list()</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
@@ -434,7 +351,7 @@ create("{query}")</string>
 				<key>subtext</key>
 				<string>Create recipe</string>
 				<key>text</key>
-				<string>Consular</string>
+				<string>Consular create</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -443,52 +360,11 @@ create("{query}")</string>
 			<key>uid</key>
 			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-
-help()</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>cons help</string>
-				<key>subtext</key>
-				<string>Help</string>
-				<key>text</key>
-				<string>Consular</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>A755FFA8-D415-4478-9723-EC5251E54BC5</string>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</key>
-		<dict>
-			<key>ypos</key>
-			<real>710</real>
-		</dict>
 		<key>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</key>
 		<dict>
 			<key>ypos</key>
@@ -517,17 +393,12 @@ help()</string>
 		<key>79A7867B-9A2B-49E0-A859-3060B688B478</key>
 		<dict>
 			<key>ypos</key>
-			<real>360</real>
+			<real>290</real>
 		</dict>
 		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
 		<dict>
 			<key>ypos</key>
 			<real>570</real>
-		</dict>
-		<key>A755FFA8-D415-4478-9723-EC5251E54BC5</key>
-		<dict>
-			<key>ypos</key>
-			<real>710</real>
 		</dict>
 		<key>C3FCAE08-6E38-4B15-940C-6B2674201958</key>
 		<dict>
