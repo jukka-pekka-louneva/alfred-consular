@@ -6,11 +6,121 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
+		<key>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>592F75F1-5FD8-46B4-A654-57077103E505</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>72D42D61-AE44-4A49-967D-ADB590BD2F38</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>A755FFA8-D415-4478-9723-EC5251E54BC5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C3FCAE08-6E38-4B15-940C-6B2674201958</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E1F46243-B721-4B93-8A93-DAA5B2A269D8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -42,188 +152,30 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cons list</string>
+				<key>subtext</key>
+				<string>Get project list</string>
+				<key>text</key>
+				<string>Consular</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F0C01742-67C4-46FD-AE53-889FE095AC80</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>#!/usr/bin/env ruby
-require 'rubygems'
-APPNAME = "Consular"
-
-# List commands
-def help
-  help =  "#{APPNAME} - Usage:\n"
-  help += "-----------------------------------------------\n"
-  help += "List all consular recipes:\tcons list\n"
-  help += "Start a project:\t\t\t\t\t\tcons start {recipe_name}\n"
-  help += "Edit recipe:\t\t\t\t\t\t\t\tcons edit {recipe_name}\n"
-  help += "Create new recipe:\t\t\t\t\tcons create {recipe_name}\n"
-  help += "Delete new recipe:\t\t\t\t\tcons delete {recipe_name}\n"
-  help += "List commands:\t\t\t\t\t\t\tcons help\n"
-  help += "-----------------------------------------------"
-  # Copy help to clipboard
-  `echo "#{help}" | pbcopy`
-
-  short_help = "Commands copied to clipboard - "
-  short_help += "consular list, "
-  short_help += "consular start {name}, "
-  short_help += "consular edit {name} "
-  short_help += "consular create {name} or "
-  short_help += "consular delete {name}."
-  # Show list on Growl
-  puts short_help
-end
-
-# Start project
-def start(project)
-  project = project.gsub(/\s+/, "")
-  if recipe_exists(project)
-    # Run consular recipe in terminal
-    osa open_terminal(run_in_terminal(["consular start #{project}"]))
-    puts "Starting project: #{project}"
-  else
-    puts "Recipy not found: #{project}"
-  end
-end
-
-# Edit recipe
-def edit(recipe)
-  recipe = recipe.gsub(/\s+/, "")
-  if recipe_exists(recipe)
-    # Run consular edit in terminal
-    osa open_terminal(run_in_terminal(["consular edit #{recipe}"]))
-    puts "Editing recipe: #{recipe}"
-  else
-    puts "Recipy not found: #{recipe}"
-  end
-end
-
-# Delete recipe
-def delete(recipe)
-  recipe = recipe.gsub(/\s+/, "")
-  if recipe_exists(recipe)
-    # Delete recipe
-    output = `bash delete.sh #{recipe}`
-    puts "Deleted recipe: #{recipe}"
-  else
-    puts "Recipy not found: #{recipe}"
-  end
-end
-
-# Create new recipe
-def create(name)
-  name = name.gsub(/\s+/, "")
-  if recipe_exists(name)
-    puts "Project #{name} already exists."
-  else
-    # Run consular edit in terminal
-    osa open_terminal(run_in_terminal(["consular edit #{name}"]))
-    puts "Created new recipe: #{name}"
-  end
-  puts name
-end
-
-# List recipes
-def list()
-  list = get_list.join(', ').gsub("\n", "")
-  # Show list on growl
-  puts "List copied to clipboard - #{list}"
-  long =  "Consular recipes:\n"
-  long += "-----------------------------------------------\n"
-  long += get_list(true).join()
-  long += "-----------------------------------------------"
-  # Copy list to clipboard
-  `echo "#{long}" | pbcopy`
-end
-
-# Return true if recipe exists
-def recipe_exists(name)
-  list = get_list(false)
-  found = false
-  list.each do |s|
-    if s.gsub(/\s+/, "") == name
-      found = true
-    end
-  end
-  found
-end
-
-# Get list of recipes
-# Set verbose to true to get detailed info
-def get_list(verbose = false)
-  output = `bash list.sh`
-  output = output.gsub(" delete.sh icon.png info.plist list.sh ", "\n").to_a[1..-1].join
-  if verbose == true
-    output = output.to_a
-  else
-    output = output.gsub(/ - (.)*\n/, "\n").to_a
-  end
-  output
-end
-
-# Run Apple Scripts
-def osa(s)
-  `osascript &lt;&lt;END\n#{s}\nEND`
-end
-
-# Apple Script for activating terminal with new tab
-# and optionally running other scripts in it.
-def open_terminal(scripts = nil)
-  script =  "tell application \"Terminal\" to activate\n"
-  script += "set runningApps to {} as list\n"
-  script += "tell application \"System Events\"\n"
-  script +=   "repeat 30 times\n"
-  script +=      "set runningApps to name of every application process whose visible is equal to true\n"
-  script +=      "if runningApps contains \"Terminal\" then\n"
-  script +=        "tell application \"Terminal\" to activate\n"
-  script +=        "delay 1\n"
-  script +=        "tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down\n"
-  script +=        "tell application \"Terminal\"\n"
-  script +=          "do script \"cd\" in first window\n"
-  script +=          "do script \"clear\" in first window\n"
-  script +=        "end tell\n"
-  if scripts
-    script +=      "#{scripts}\n"
-  end
-  script +=        "exit repeat\n"
-  script +=      "end if\n"
-  script +=    "end repeat\n"
-  script +=  "end tell\n"
-  script
-end
-
-# Apple Script for running scripts in terminal
-def run_in_terminal(arr)
-  script = "tell application \"Terminal\"\n"
-  arr.each do |exe|
-    script +=  "do script \"#{exe}\" in first window\n"
-  end
-  script += "end tell\n"
-  script
-end
-
-# Init
-args =  "{query}".split(" ")
-if args.length &lt; 1
-  help()
-else
-  case args[0]
-  when "help"
-    help()
-  when "list"
-    list()
-  when "edit"
-    edit(args[1])
-  when "delete"
-    delete(args[1])
-  when "create"
-    create(args[1])
-  when "start"
-    start(args[1])
-  else
-    start(ARGV[0])
-  end
-end
-</string>
+				<string>require 'consular'
+list()</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
@@ -235,21 +187,136 @@ end
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+edit("{query}")</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
 				<key>keyword</key>
-				<string>cons</string>
+				<string>cons edit</string>
+				<key>runningsubtext</key>
+				<string>Fetching projects...</string>
+				<key>script</key>
+				<string>require 'consular'
+
+string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
+list = get_list(false)
+list.each do |item|
+if item.match('^' + "{query}")
+
+string += '&lt;item uid="'
+string += item
+string += '" arg="'
+string += item
+string += '" valid="yes" autocomplete="'
+string += item
+string += '"&gt;&lt;title&gt;'
+string += item
+string += '&lt;/title&gt;'
+string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+
+end
+end
+
+string += '&lt;/items&gt;'
+
+puts string
+</string>
 				<key>subtext</key>
-				<string>Start projects and list, edit or create recipes. Type cons help to list commands.</string>
-				<key>text</key>
+				<string>Edit consular recipe</string>
+				<key>title</key>
 				<string>Consular</string>
+				<key>type</key>
+				<integer>2</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>F0C01742-67C4-46FD-AE53-889FE095AC80</string>
+			<string>E1F46243-B721-4B93-8A93-DAA5B2A269D8</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+start("{query}")</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>cons start</string>
+				<key>runningsubtext</key>
+				<string>Fetching projects...</string>
+				<key>script</key>
+				<string>require 'consular'
+
+string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
+list = get_list(false)
+list.each do |item|
+if item.match('^' + "{query}")
+
+string += '&lt;item uid="'
+string += item
+string += '" arg="'
+string += item
+string += '" valid="yes" autocomplete="'
+string += item
+string += '"&gt;&lt;title&gt;'
+string += item
+string += '&lt;/title&gt;'
+string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+
+end
+end
+
+string += '&lt;/items&gt;'
+
+puts string
+</string>
+				<key>subtext</key>
+				<string>Start consular project</string>
+				<key>title</key>
+				<string>Consular</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -274,20 +341,208 @@ end
 			<key>uid</key>
 			<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+delete("{query}")</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>cons delete</string>
+				<key>runningsubtext</key>
+				<string>Fetching projects...</string>
+				<key>script</key>
+				<string>require 'consular'
+
+string = '&lt;?xml version="1.0"?&gt;&lt;items&gt;'
+list = get_list(false)
+list.each do |item|
+if item.match('^' + "{query}")
+
+string += '&lt;item uid="'
+string += item
+string += '" arg="'
+string += item
+string += '" valid="yes" autocomplete="'
+string += item
+string += '"&gt;&lt;title&gt;'
+string += item
+string += '&lt;/title&gt;'
+string += '&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+
+end
+end
+
+string += '&lt;/items&gt;'
+
+puts string
+</string>
+				<key>subtext</key>
+				<string>Delete recipe</string>
+				<key>title</key>
+				<string>Consular</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+create("{query}")</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>cons create</string>
+				<key>subtext</key>
+				<string>Create recipe</string>
+				<key>text</key>
+				<string>Consular</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+
+help()</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cons help</string>
+				<key>subtext</key>
+				<string>Help</string>
+				<key>text</key>
+				<string>Consular</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A755FFA8-D415-4478-9723-EC5251E54BC5</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>13ECE1E9-C010-4EF5-8579-8AA74F277BF4</key>
+		<dict>
+			<key>ypos</key>
+			<real>710</real>
+		</dict>
+		<key>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
 		<key>592F75F1-5FD8-46B4-A654-57077103E505</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</key>
+		<dict>
+			<key>ypos</key>
+			<real>290</real>
+		</dict>
+		<key>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</key>
+		<dict>
+			<key>ypos</key>
+			<real>570</real>
+		</dict>
+		<key>72D42D61-AE44-4A49-967D-ADB590BD2F38</key>
+		<dict>
+			<key>ypos</key>
+			<real>290</real>
+		</dict>
 		<key>79A7867B-9A2B-49E0-A859-3060B688B478</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>360</real>
+		</dict>
+		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
+		<dict>
+			<key>ypos</key>
+			<real>570</real>
+		</dict>
+		<key>A755FFA8-D415-4478-9723-EC5251E54BC5</key>
+		<dict>
+			<key>ypos</key>
+			<real>710</real>
+		</dict>
+		<key>C3FCAE08-6E38-4B15-940C-6B2674201958</key>
+		<dict>
+			<key>ypos</key>
+			<real>430</real>
+		</dict>
+		<key>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</key>
+		<dict>
+			<key>ypos</key>
+			<real>430</real>
+		</dict>
+		<key>E1F46243-B721-4B93-8A93-DAA5B2A269D8</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
 		</dict>
 		<key>F0C01742-67C4-46FD-AE53-889FE095AC80</key>
 		<dict>
