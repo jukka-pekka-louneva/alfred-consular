@@ -239,6 +239,10 @@ end
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>cons</string>
+				<key>subtext</key>
+				<string>Start projects and list, edit or create recipes. Type cons help to list commands.</string>
+				<key>text</key>
+				<string>Consular</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
