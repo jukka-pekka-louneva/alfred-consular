@@ -1,13 +1,32 @@
 # Consular Alfred Workflow
 
-A workflow for Alfred 2.0 for using [consular](https://github.com/achiu/consular "Consular in Github")
+A workflow for Alfred 2.0 for using [consular](https://github.com/achiu/consular "Consular in Github").
 
-![](http://f.cl.ly/items/110x2R1G3i1D3H0C2h47/cons_list.png)
+![](http://f.cl.ly/items/2p3n1z2n2r2P3q3h0e2U/cons.png)
 
 ## Usage
-* List all consular recipes:	`cons list`
-* Start a project:						`cons start {recipe_name}`
-* Edit recipe:								`cons edit {recipe_name}`
-* Create new recipe:					`cons create {recipe_name}`
-* Delete new recipe:					`cons delete {recipe_name}`
-* List commands:							`cons help`
+To get started, run `cons update`.
+
+### Start
+`cons start {recipe_name}`
+Start a consular project.
+
+### Create
+`cons create`
+Create new consular recipe.
+
+### Edit
+`cons edit {recipe_name}`
+Edit a consular recipe.
+
+### Delete
+`cons delete {recipe_name}`
+Delete consular recipe.
+
+### List
+`cons list`
+Updates project list and copies it to clipboard.
+
+### Update
+`cons update`
+Updates project list.

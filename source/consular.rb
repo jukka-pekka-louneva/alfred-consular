@@ -104,11 +104,11 @@ end
 # Set verbose to true to get detailed info
 def get_list(verbose = false)
   output = `bash list.sh`
-  output = output.gsub(" consular.rb delete.sh icon.png info.plist list.sh list.txt ", "\n").to_a[1..-1].join
+  output = output.gsub(/[\w_\-]*?\.[rb|sh|png|plist|txt]*/, "\n").gsub(/^\s/, "").gsub(/\s$/, "").gsub(/\n\s\n/, "\n").to_a[1..-1]
   if verbose == true
-    output = output.to_a
+    output = output
   else
-    output = output.gsub(/ - (.)*\n/, "\n").to_a
+    output = output.join.gsub(/ - (.)*\n/, "\n").to_a
   end
   output
 end
@@ -121,17 +121,22 @@ end
 def create_xml_menu(list, query)
   string = '<?xml version="1.0"?><items>'
   list.each do |item|
-    if item.match('^' + query)
+    if item[:title] && item[:title].match('^' + query)
 
       string += '<item uid="'
-      string += item
+      string += item[:title]
       string += '" arg="'
-      string += item
+      string += item[:title]
       string += '" valid="yes" autocomplete="'
-      string += item
+      string += item[:title]
       string += '"><title>'
-      string += item
+      string += item[:title]
       string += '</title>'
+      if (item[:subtitle])
+        string += '<subtitle>'
+        string += item[:subtitle]
+        string += '</subtitle>'
+      end
       string += '<icon>icon.png</icon></item>'
 
     end
@@ -144,12 +149,28 @@ def create_xml_menu(list, query)
 end
 
 def update_list()
-  File.open('list.txt', 'w') { |file| file.write(get_list(false).join(',')) }
+  list = get_list(true)
+  list.each do |item|
+    item = item.gsub(',', '&#44')
+  end
+  File.open('list.txt', 'w') { |file| file.write(list.join(',')) }
 end
 
 # Create menu for Alfred script filter
 def xml_menu(query)
-  File.open('list.txt', 'r') { |file| return create_xml_menu(file.read.split(','), query) }
+  menu = []
+  list = []
+  File.open('list.txt', 'r') { |file| menu = file.read.split(',') }
+  menu.each do |item|
+    obj = {}
+    arr = item.split(' - ')
+    obj[:title] = arr.shift()
+    if (arr.length > 0)
+      obj[:subtitle] = arr.join(' - ')
+    end
+    list.push(obj)
+  end
+  return create_xml_menu(list, query)
 end
 
 # Apple Script for activating terminal with new tab

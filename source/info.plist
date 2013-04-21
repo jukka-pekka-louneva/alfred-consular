@@ -61,6 +61,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>75662107-F5B0-406B-8E64-B114DC4CC9BA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
 		<array>
 			<dict>
@@ -94,6 +105,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>75662107-F5B0-406B-8E64-B114DC4CC9BA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>E1F46243-B721-4B93-8A93-DAA5B2A269D8</key>
 		<array>
 			<dict>
@@ -120,7 +142,7 @@
 	<key>createdby</key>
 	<string></string>
 	<key>description</key>
-	<string>Start projects and list, edit or create recipes. Type cons help to list commands.</string>
+	<string>Start projects and list, edit or create recipes. Type cons update to get started.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -130,38 +152,38 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>cons list</string>
-				<key>subtext</key>
-				<string>Get project list</string>
-				<key>text</key>
-				<string>Consular list (updates list)</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>F0C01742-67C4-46FD-AE53-889FE095AC80</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
 update_list()
-list()</string>
+puts 'Updated list.'</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>592F75F1-5FD8-46B4-A654-57077103E505</string>
+			<string>75662107-F5B0-406B-8E64-B114DC4CC9BA</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cons update</string>
+				<key>subtext</key>
+				<string>Updates project list.</string>
+				<key>text</key>
+				<string>Cons update</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -196,9 +218,9 @@ edit("{query}")
 
 puts xml_menu("{query}")</string>
 				<key>subtext</key>
-				<string>Edit consular recipe</string>
+				<string>Edit a consular recipe.</string>
 				<key>title</key>
-				<string>Consular edit</string>
+				<string>Cons edit</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -242,9 +264,9 @@ start("{query}")</string>
 puts xml_menu("{query}")
 </string>
 				<key>subtext</key>
-				<string>Start consular project</string>
+				<string>Start a consular project.</string>
 				<key>title</key>
-				<string>Consular start</string>
+				<string>Cons start</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -299,7 +321,7 @@ list()</string>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
@@ -311,9 +333,9 @@ list()</string>
 
 puts xml_menu("{query}")</string>
 				<key>subtext</key>
-				<string>Delete recipe</string>
+				<string>Delete consular recipe.</string>
 				<key>title</key>
-				<string>Consular delete</string>
+				<string>Cons delete</string>
 				<key>type</key>
 				<integer>2</integer>
 				<key>withspace</key>
@@ -349,9 +371,9 @@ list()</string>
 				<key>keyword</key>
 				<string>cons create</string>
 				<key>subtext</key>
-				<string>Create recipe</string>
+				<string>Create new consular recipe.</string>
 				<key>text</key>
-				<string>Consular create</string>
+				<string>Cons create</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -359,6 +381,42 @@ list()</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cons list</string>
+				<key>subtext</key>
+				<string>Updates project list and copies it to clipboard.</string>
+				<key>text</key>
+				<string>Cons list</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F0C01742-67C4-46FD-AE53-889FE095AC80</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+update_list()
+list()</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>592F75F1-5FD8-46B4-A654-57077103E505</string>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -373,7 +431,7 @@ list()</string>
 		<key>592F75F1-5FD8-46B4-A654-57077103E505</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>720</real>
 		</dict>
 		<key>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</key>
 		<dict>
@@ -389,6 +447,11 @@ list()</string>
 		<dict>
 			<key>ypos</key>
 			<real>290</real>
+		</dict>
+		<key>75662107-F5B0-406B-8E64-B114DC4CC9BA</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
 		</dict>
 		<key>79A7867B-9A2B-49E0-A859-3060B688B478</key>
 		<dict>
@@ -410,6 +473,11 @@ list()</string>
 			<key>ypos</key>
 			<real>430</real>
 		</dict>
+		<key>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
 		<key>E1F46243-B721-4B93-8A93-DAA5B2A269D8</key>
 		<dict>
 			<key>ypos</key>
@@ -418,10 +486,10 @@ list()</string>
 		<key>F0C01742-67C4-46FD-AE53-889FE095AC80</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>720</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/jukka-pekka-louneva/alfred-consular</string>
 </dict>
 </plist>
