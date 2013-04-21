@@ -6,9 +6,6 @@ A workflow for Alfred 2.0 for using [consular](https://github.com/achiu/consular
 
 ## Usage
 
-### Get started
-To get started, run `cons update`.
-
 ### Start
 ![](http://f.cl.ly/items/22212v3H00471r0M1G2g/cons_start.png)
 

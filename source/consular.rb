@@ -2,30 +2,6 @@
 require 'rubygems'
 APPNAME = "Consular"
 
-# List commands
-def help
-  help =  "#{APPNAME} - Usage:\n"
-  help += "-----------------------------------------------\n"
-  help += "List all consular recipes:\tcons list\n"
-  help += "Start a project:\t\t\t\t\t\tcons start {recipe_name}\n"
-  help += "Edit recipe:\t\t\t\t\t\t\t\tcons edit {recipe_name}\n"
-  help += "Create new recipe:\t\t\t\t\tcons create {recipe_name}\n"
-  help += "Delete new recipe:\t\t\t\t\tcons delete {recipe_name}\n"
-  help += "List commands:\t\t\t\t\t\t\tcons help\n"
-  help += "-----------------------------------------------"
-  # Copy help to clipboard
-  `echo "#{help}" | pbcopy`
-
-  short_help = "Commands copied to clipboard - "
-  short_help += "consular list, "
-  short_help += "consular start {name}, "
-  short_help += "consular edit {name} "
-  short_help += "consular create {name} or "
-  short_help += "consular delete {name}."
-  # Show list on Growl
-  puts short_help
-end
-
 # Start project
 def start(project)
   project = project.gsub(/\s+/, "")
@@ -56,6 +32,7 @@ def delete(recipe)
   if recipe_exists(recipe)
     # Delete recipe
     output = `bash delete.sh #{recipe}`
+    `ruby consular.rb update`
     puts "Deleted recipe: #{recipe}"
   else
     puts "Recipy not found: #{recipe}"
@@ -82,7 +59,7 @@ def list()
   puts "List copied to clipboard - #{list}"
   long =  "Consular recipes:\n"
   long += "-----------------------------------------------\n"
-  long += get_list(true).join()
+  long += get_list(true).join('\n') + '\n'
   long += "-----------------------------------------------"
   # Copy list to clipboard
   `echo "#{long}" | pbcopy`
@@ -104,11 +81,13 @@ end
 # Set verbose to true to get detailed info
 def get_list(verbose = false)
   output = `bash list.sh`
-  output = output.gsub(/[\w_\-]*?\.[rb|sh|png|plist|txt]*/, "\n").gsub(/^\s/, "").gsub(/\s$/, "").gsub(/\n\s\n/, "\n").to_a[1..-1]
+  output = output.gsub(/[\w_\-]*?\.[rb|sh|png|plist|txt]*/, "\n").gsub(/^\s/, "").gsub(/\s$/, "").gsub(/\n\s\n/, "\n").split("\n")
+  output.shift
   if verbose == true
     output = output
   else
-    output = output.join.gsub(/ - (.)*\n/, "\n").to_a
+    output = output.join(',') + ','
+    output = output.gsub(/ - (.)*?,/, "\n").to_a
   end
   output
 end
@@ -153,6 +132,7 @@ def create_xml_menu(list, query, icon)
 
 end
 
+# Update project list
 def update_list()
   list = get_list(true)
   list.each do |item|
@@ -183,19 +163,28 @@ end
 def open_terminal(scripts = nil)
   script =  "tell application \"Terminal\" to activate\n"
   script += "set runningApps to {} as list\n"
+  script += "set terminalIsClosed to true\n"
+  script += "tell application \"System Events\"\n"
+  script +=   "set terminalIsClosed to ((count(processes whose name is \"Terminal\")) is 0)\n"
+  script +=  "end tell\n"
   script += "tell application \"System Events\"\n"
   script +=   "repeat 30 times\n"
   script +=      "set runningApps to name of every application process whose visible is equal to true\n"
   script +=      "if runningApps contains \"Terminal\" then\n"
   script +=        "tell application \"Terminal\" to activate\n"
   script +=        "delay 1\n"
-  script +=        "tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down\n"
+  script +=        "if terminalIsClosed is false\n"
+  script +=          "tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down\n"
+  script +=        "end if\n"
   script +=        "tell application \"Terminal\"\n"
   script +=          "do script \"cd\" in first window\n"
   script +=          "do script \"clear\" in first window\n"
   script +=        "end tell\n"
   if scripts
     script +=      "#{scripts}\n"
+    script +=      "tell application \"Terminal\"\n"
+    script +=        "do script \"exit\" in first window\n"
+    script +=      "end tell\n"
   end
   script +=        "exit repeat\n"
   script +=      "end if\n"
@@ -204,12 +193,35 @@ def open_terminal(scripts = nil)
   script
 end
 
+# Get path to Alfred directory
+def get_current_dir()
+  path = Dir.pwd()
+  path = path + "/"
+  return path
+end
+
 # Apple Script for running scripts in terminal
 def run_in_terminal(arr)
+  path = get_current_dir()
   script = "tell application \"Terminal\"\n"
   arr.each do |exe|
     script +=  "do script \"#{exe}\" in first window\n"
   end
+  script +=  "do script \"cd '" + path + "'\" in first window\n"
+  script +=  "do script \"ruby consular.rb update\" in first window\n"
   script += "end tell\n"
-  script
+end
+# Init
+if ARGV.size == 0
+  if !File.exist?("list.txt")
+    # Update project list if not available
+    update_list()
+  end
+else
+  args = ARGV[0].split(" ")
+  case args[0]
+  when "update"
+    # Update project list
+    update_list()
+  end
 end
