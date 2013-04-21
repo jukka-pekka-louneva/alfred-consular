@@ -7,7 +7,7 @@ def start(project)
   project = project.gsub(/\s+/, "")
   if recipe_exists(project)
     # Run consular recipe in terminal
-    osa open_terminal(run_in_terminal(["consular start #{project}"]))
+    osa open_terminal(run_in_terminal(["consular start #{project}"], true))
     puts "Starting project: #{project}"
   else
     puts "Recipy not found: #{project}"
@@ -161,19 +161,20 @@ end
 # Apple Script for activating terminal with new tab
 # and optionally running other scripts in it.
 def open_terminal(scripts = nil)
-  script =  "tell application \"Terminal\" to activate\n"
-  script += "set runningApps to {} as list\n"
-  script += "set terminalIsClosed to true\n"
+  script =  "set terminalIsRunning to false as boolean\n"
   script += "tell application \"System Events\"\n"
-  script +=   "set terminalIsClosed to ((count(processes whose name is \"Terminal\")) is 0)\n"
-  script +=  "end tell\n"
+  script +=   "set terminalCount to (count (processes whose name is \"Terminal\")) as number\n"
+  script +=   "set terminalIsRunning to (terminalCount is not 0) as boolean\n"
+  script += "end tell\n"
+  script += "tell application \"Terminal\" to activate\n"
+  script += "set runningApps to {} as list\n"
   script += "tell application \"System Events\"\n"
   script +=   "repeat 30 times\n"
   script +=      "set runningApps to name of every application process whose visible is equal to true\n"
   script +=      "if runningApps contains \"Terminal\" then\n"
   script +=        "tell application \"Terminal\" to activate\n"
   script +=        "delay 1\n"
-  script +=        "if terminalIsClosed is false\n"
+  script +=        "if terminalIsRunning is true\n"
   script +=          "tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down\n"
   script +=        "end if\n"
   script +=        "tell application \"Terminal\"\n"
@@ -201,14 +202,17 @@ def get_current_dir()
 end
 
 # Apple Script for running scripts in terminal
-def run_in_terminal(arr)
+def run_in_terminal(arr, skipUpdate = false)
   path = get_current_dir()
   script = "tell application \"Terminal\"\n"
   arr.each do |exe|
-    script +=  "do script \"#{exe}\" in first window\n"
+    script += "do script \"#{exe}\" in first window\n"
   end
-  script +=  "do script \"cd '" + path + "'\" in first window\n"
-  script +=  "do script \"ruby consular.rb update\" in first window\n"
+  if (skipUpdate != true)
+    # Update project list after running command
+    script +=   "do script \"cd '" + path + "'\" in first window\n"
+    script +=   "do script \"ruby consular.rb update\" in first window\n"
+  end
   script += "end tell\n"
 end
 

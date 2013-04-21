@@ -120,29 +120,13 @@
 	<key>createdby</key>
 	<string></string>
 	<key>description</key>
-	<string>Start projects and list, edit or create recipes. Type cons update to get started.</string>
+	<string>Start projects and list, edit or create recipes.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>Consular</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-start("{query}")</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -180,6 +164,22 @@ puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
+start("{query}")</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
 create("{query}")
 list()</string>
 				<key>type</key>
@@ -208,23 +208,6 @@ list()</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-edit("{query}")
-</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -281,6 +264,40 @@ puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+edit("{query}")
+</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+delete("{query}")
+list()</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -306,23 +323,6 @@ puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-delete("{query}")
-list()</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
 		</dict>
 		<dict>
 			<key>config</key>
