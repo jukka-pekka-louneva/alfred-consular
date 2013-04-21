@@ -216,7 +216,7 @@ edit("{query}")
 				<key>script</key>
 				<string>require 'consular'
 
-puts xml_menu("{query}")</string>
+puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
 				<key>subtext</key>
 				<string>Edit a consular recipe.</string>
 				<key>title</key>
@@ -261,7 +261,7 @@ start("{query}")</string>
 				<key>script</key>
 				<string>require 'consular'
 
-puts xml_menu("{query}")
+puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
 </string>
 				<key>subtext</key>
 				<string>Start a consular project.</string>
@@ -331,7 +331,7 @@ list()</string>
 				<key>script</key>
 				<string>require 'consular'
 
-puts xml_menu("{query}")</string>
+puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 				<key>subtext</key>
 				<string>Delete consular recipe.</string>
 				<key>title</key>

@@ -118,7 +118,7 @@ def osa(s)
   `osascript <<END\n#{s}\nEND`
 end
 
-def create_xml_menu(list, query)
+def create_xml_menu(list, query, icon)
   string = '<?xml version="1.0"?><items>'
   list.each do |item|
     if item[:title] && item[:title].match('^' + query)
@@ -137,7 +137,12 @@ def create_xml_menu(list, query)
         string += item[:subtitle]
         string += '</subtitle>'
       end
-      string += '<icon>icon.png</icon></item>'
+      if (icon)
+        string += '<icon>'
+        string += icon
+        string += '.png</icon>'
+      end
+      string += '</item>'
 
     end
   end
@@ -157,7 +162,7 @@ def update_list()
 end
 
 # Create menu for Alfred script filter
-def xml_menu(query)
+def xml_menu(query, icon)
   menu = []
   list = []
   File.open('list.txt', 'r') { |file| menu = file.read.split(',') }
@@ -170,7 +175,7 @@ def xml_menu(query)
     end
     list.push(obj)
   end
-  return create_xml_menu(list, query)
+  return create_xml_menu(list, query, icon)
 end
 
 # Apple Script for activating terminal with new tab
