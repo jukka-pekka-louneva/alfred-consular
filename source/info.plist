@@ -61,17 +61,6 @@
 				<string></string>
 			</dict>
 		</array>
-		<key>75662107-F5B0-406B-8E64-B114DC4CC9BA</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
 		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
 		<array>
 			<dict>
@@ -99,17 +88,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>75662107-F5B0-406B-8E64-B114DC4CC9BA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -156,34 +134,80 @@
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
-update_list()
-puts 'Updated list.'</string>
+start("{query}")</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>75662107-F5B0-406B-8E64-B114DC4CC9BA</string>
+			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
 				<key>keyword</key>
-				<string>cons update</string>
+				<string>cons start</string>
+				<key>runningsubtext</key>
+				<string>Fetching projects...</string>
+				<key>script</key>
+				<string>require 'consular'
+
+puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
+</string>
 				<key>subtext</key>
-				<string>Updates project list.</string>
-				<key>text</key>
-				<string>Cons update</string>
+				<string>Start a consular project.</string>
+				<key>title</key>
+				<string>Cons start</string>
+				<key>type</key>
+				<integer>2</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>require 'consular'
+create("{query}")
+list()</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>cons create</string>
+				<key>subtext</key>
+				<string>Create new consular recipe.</string>
+				<key>text</key>
+				<string>Cons create</string>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</string>
+			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -234,52 +258,6 @@ puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-start("{query}")</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>cons start</string>
-				<key>runningsubtext</key>
-				<string>Fetching projects...</string>
-				<key>script</key>
-				<string>require 'consular'
-
-puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
-</string>
-				<key>subtext</key>
-				<string>Start a consular project.</string>
-				<key>title</key>
-				<string>Cons start</string>
-				<key>type</key>
-				<integer>2</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -299,23 +277,6 @@ puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-delete("{query}")
-list()</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -353,7 +314,7 @@ puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 				<integer>127</integer>
 				<key>script</key>
 				<string>require 'consular'
-create("{query}")
+delete("{query}")
 list()</string>
 				<key>type</key>
 				<integer>2</integer>
@@ -361,26 +322,7 @@ list()</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>cons create</string>
-				<key>subtext</key>
-				<string>Create new consular recipe.</string>
-				<key>text</key>
-				<string>Cons create</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
+			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -426,29 +368,24 @@ list()</string>
 		<key>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</key>
 		<dict>
 			<key>ypos</key>
-			<real>150</real>
+			<real>250</real>
 		</dict>
 		<key>592F75F1-5FD8-46B4-A654-57077103E505</key>
 		<dict>
 			<key>ypos</key>
-			<real>720</real>
+			<real>490</real>
 		</dict>
 		<key>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>10</real>
 		</dict>
 		<key>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</key>
 		<dict>
 			<key>ypos</key>
-			<real>570</real>
+			<real>130</real>
 		</dict>
 		<key>72D42D61-AE44-4A49-967D-ADB590BD2F38</key>
-		<dict>
-			<key>ypos</key>
-			<real>290</real>
-		</dict>
-		<key>75662107-F5B0-406B-8E64-B114DC4CC9BA</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
@@ -456,37 +393,32 @@ list()</string>
 		<key>79A7867B-9A2B-49E0-A859-3060B688B478</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>250</real>
 		</dict>
 		<key>7FF9FE1F-119B-4646-9BAC-41D1F354789C</key>
 		<dict>
 			<key>ypos</key>
-			<real>570</real>
+			<real>130</real>
 		</dict>
 		<key>C3FCAE08-6E38-4B15-940C-6B2674201958</key>
 		<dict>
 			<key>ypos</key>
-			<real>430</real>
+			<real>370</real>
 		</dict>
 		<key>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</key>
 		<dict>
 			<key>ypos</key>
-			<real>430</real>
-		</dict>
-		<key>DA987DD3-E9BA-4E2B-A7D4-98512C8874E2</key>
-		<dict>
-			<key>ypos</key>
-			<real>10</real>
+			<real>370</real>
 		</dict>
 		<key>E1F46243-B721-4B93-8A93-DAA5B2A269D8</key>
 		<dict>
 			<key>ypos</key>
-			<real>150</real>
+			<real>250</real>
 		</dict>
 		<key>F0C01742-67C4-46FD-AE53-889FE095AC80</key>
 		<dict>
 			<key>ypos</key>
-			<real>720</real>
+			<real>490</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -35,9 +35,3 @@ Delete consular recipe.
 
 `cons list`
 Updates project list and copies it to clipboard.
-
-### Update
-![](http://f.cl.ly/items/0K2P2c2R0Z2k3X0s1624/cons_update.png)
-
-`cons update`
-Updates project list.

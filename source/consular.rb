@@ -14,6 +14,19 @@ def start(project)
   end
 end
 
+# Create new recipe
+def create(name)
+  name = name.gsub(/\s+/, "")
+  if recipe_exists(name)
+    puts "Project #{name} already exists."
+  else
+    # Run consular edit in terminal
+    osa open_terminal(run_in_terminal(["consular edit #{name}"]))
+    puts "Created new recipe: #{name}"
+  end
+  puts name
+end
+
 # Edit recipe
 def edit(recipe)
   recipe = recipe.gsub(/\s+/, "")
@@ -37,19 +50,6 @@ def delete(recipe)
   else
     puts "Recipy not found: #{recipe}"
   end
-end
-
-# Create new recipe
-def create(name)
-  name = name.gsub(/\s+/, "")
-  if recipe_exists(name)
-    puts "Project #{name} already exists."
-  else
-    # Run consular edit in terminal
-    osa open_terminal(run_in_terminal(["consular edit #{name}"]))
-    puts "Created new recipe: #{name}"
-  end
-  puts name
 end
 
 # List recipes
@@ -92,6 +92,32 @@ def get_list(verbose = false)
   output
 end
 
+# Update project list
+def update_list()
+  list = get_list(true)
+  list.each do |item|
+    item = item.gsub(',', '&#44')
+  end
+  File.open('list.txt', 'w') { |file| file.write(list.join(',')) }
+end
+
+# Create menu for Alfred script filter
+def xml_menu(query, icon)
+  menu = []
+  list = []
+  File.open('list.txt', 'r') { |file| menu = file.read.split(',') }
+  menu.each do |item|
+    obj = {}
+    arr = item.split(' - ')
+    obj[:title] = arr.shift()
+    if (arr.length > 0)
+      obj[:subtitle] = arr.join(' - ')
+    end
+    list.push(obj)
+  end
+  return create_xml_menu(list, query, icon)
+end
+
 # Run Apple Scripts
 def osa(s)
   `osascript <<END\n#{s}\nEND`
@@ -130,32 +156,6 @@ def create_xml_menu(list, query, icon)
 
   return string
 
-end
-
-# Update project list
-def update_list()
-  list = get_list(true)
-  list.each do |item|
-    item = item.gsub(',', '&#44')
-  end
-  File.open('list.txt', 'w') { |file| file.write(list.join(',')) }
-end
-
-# Create menu for Alfred script filter
-def xml_menu(query, icon)
-  menu = []
-  list = []
-  File.open('list.txt', 'r') { |file| menu = file.read.split(',') }
-  menu.each do |item|
-    obj = {}
-    arr = item.split(' - ')
-    obj[:title] = arr.shift()
-    if (arr.length > 0)
-      obj[:subtitle] = arr.join(' - ')
-    end
-    list.push(obj)
-  end
-  return create_xml_menu(list, query, icon)
 end
 
 # Apple Script for activating terminal with new tab
@@ -211,6 +211,7 @@ def run_in_terminal(arr)
   script +=  "do script \"ruby consular.rb update\" in first window\n"
   script += "end tell\n"
 end
+
 # Init
 if ARGV.size == 0
   if !File.exist?("list.txt")
