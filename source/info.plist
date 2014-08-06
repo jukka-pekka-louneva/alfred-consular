@@ -130,6 +130,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby start.rb "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -139,16 +156,13 @@
 				<key>runningsubtext</key>
 				<string>Fetching projects...</string>
 				<key>script</key>
-				<string>require 'consular'
-
-puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
-</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby menu.rb "{query}"</string>
 				<key>subtext</key>
 				<string>Start a consular project.</string>
 				<key>title</key>
 				<string>Cons start</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -156,6 +170,8 @@ puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -163,32 +179,16 @@ puts xml_menu("{query}", "60BEC012-D8A0-4DDE-AA6E-3FCE707A26E6")
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>require 'consular'
-start("{query}")</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby create.rb "{query}"</string>
 				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>72D42D61-AE44-4A49-967D-ADB590BD2F38</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-create("{query}")
-list()</string>
-				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>68517F8E-6BE3-4A8D-B37B-8B7462B29B30</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -208,6 +208,8 @@ list()</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>7FF9FE1F-119B-4646-9BAC-41D1F354789C</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -221,15 +223,13 @@ list()</string>
 				<key>runningsubtext</key>
 				<string>Fetching projects...</string>
 				<key>script</key>
-				<string>require 'consular'
-
-puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby menu.rb "{query}"</string>
 				<key>subtext</key>
 				<string>Edit a consular recipe.</string>
 				<key>title</key>
 				<string>Cons edit</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -237,6 +237,25 @@ puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>E1F46243-B721-4B93-8A93-DAA5B2A269D8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby edit.rb "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -260,40 +279,8 @@ puts xml_menu("{query}", "E1F46243-B721-4B93-8A93-DAA5B2A269D8")</string>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>79A7867B-9A2B-49E0-A859-3060B688B478</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-edit("{query}")
-</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3C2C7093-B4AE-4F06-B6D7-FAC4C5156E30</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>require 'consular'
-delete("{query}")
-list()</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -307,15 +294,13 @@ list()</string>
 				<key>runningsubtext</key>
 				<string>Fetching projects...</string>
 				<key>script</key>
-				<string>require 'consular'
-
-puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby menu.rb "{query}"</string>
 				<key>subtext</key>
 				<string>Delete consular recipe.</string>
 				<key>title</key>
 				<string>Cons delete</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -323,6 +308,25 @@ puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>D26C6028-ECF3-4AB5-B010-BB9B38F51A33</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby delete.rb "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C3FCAE08-6E38-4B15-940C-6B2674201958</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -342,6 +346,8 @@ puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>F0C01742-67C4-46FD-AE53-889FE095AC80</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -349,16 +355,16 @@ puts xml_menu("{query}", "D26C6028-ECF3-4AB5-B010-BB9B38F51A33")</string>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>require 'consular'
-update_list()
-list()</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby list.rb</string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>592F75F1-5FD8-46B4-A654-57077103E505</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>

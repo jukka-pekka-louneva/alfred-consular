@@ -63,6 +63,8 @@ def list()
   long += "-----------------------------------------------"
   # Copy list to clipboard
   `echo "#{long}" | pbcopy`
+  # `echo "test" | pbcopy`
+  # puts "test"
 end
 
 # Return true if recipe exists
@@ -87,7 +89,7 @@ def get_list(verbose = false)
     output = output
   else
     output = output.join(',') + ','
-    output = output.gsub(/ - (.)*?,/, "\n").to_a
+    output = output.gsub(/ - (.)*?,/, "\n").split("\n")
   end
   output
 end
